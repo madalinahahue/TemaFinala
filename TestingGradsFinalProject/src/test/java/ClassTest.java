@@ -56,7 +56,7 @@ public class ClassTest {
 
         verifyUser = PageFactory.initElements(webDriver, VerifyUser.class);
         verifyUser.verifyLogin("madalinaAdmin", "testtest");
-        verifyUser.verifyUsers("madalinatestAdmin");
+        verifyUser.verifyUsers("madalinaAdmin");
 
 
         String displayContact = verifyUser.displayContact();

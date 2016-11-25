@@ -43,11 +43,17 @@ public class VerifyUser {
     @FindBy(xpath = "//div[@id='overlay-container']/iframe[@title='People dialog']")
     private WebElement iframeAddUser;
 
-    @FindBy(xpath = "//a[@href='/drupal-7.15/?q=user/22/contact']")
+//    @FindBy(xpath = "//a[@href='/drupal-7.15/?q=user/22/contact']")
+//    private WebElement clickOnContact;
+
+    @FindBy(xpath = "//div[@id='tabs-wrapper']/ul/li[5]/a")
     private WebElement clickOnContact;
 
     @FindBy(id = "edit-name")
     private WebElement thisIsMyName;
+
+    @FindBy(id = "toolbar")
+    private List<WebElement> toolbarList;
 
     //login with the user i just created
     public void verifyLogin(String username, String password) {
@@ -66,24 +72,34 @@ public class VerifyUser {
 
     public void verifyUsers(String username) {
 
-        webDriver.switchTo().defaultContent();
-        webDriver.switchTo().frame(iframeAddUser);
+        int toolbar = toolbarList.size();
+        if (toolbar != 0) {
 
-        for(int i=0; i< listofUsers.size(); i++) {
+            clickPeopleOption.click();
 
-            String users = listOfUsernames.get(i).getText();
-            //System.out.println(users);
-            String roles = listOfRoles.get(i).getText();
-            //System.out.println(roles);
+            webDriver.switchTo().defaultContent();
+            webDriver.switchTo().frame(iframeAddUser);
 
-            if(users.contains(username)) {
-                System.out.println("The user " + users + " exists and has the role of: " + roles);
-                listOfUsernames.get(i).click();
-                break;
+            for (int i = 0; i < listofUsers.size(); i++) {
+
+                String users = listOfUsernames.get(i).getText();
+                //System.out.println(users);
+                String roles = listOfRoles.get(i).getText();
+                //System.out.println(roles);
+
+                if (users.contains(username)) {
+                    System.out.println("The user " + users + " exists and has the role of: " + roles);
+                    listOfUsernames.get(i).click();
+                    break;
+                }
             }
+
+            webDriver.switchTo().defaultContent();
+            clickOnContact.click();
         }
-        webDriver.switchTo().defaultContent();
-        clickOnContact.click();
+        else {
+            System.out.println("This user is not Admin");
+        }
     }
 
 
