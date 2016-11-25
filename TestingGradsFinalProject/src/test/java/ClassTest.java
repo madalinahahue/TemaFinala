@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.PageFactory;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.concurrent.TimeUnit;
 
@@ -23,7 +24,6 @@ public class ClassTest {
     private HomePage test2Params;
     private CreateUsers createUsers;
     private VerifyUser verifyUser;
-    private TestingDatabase testingDatabase;
     private ParamDatabase paramDatabase;
 
 
@@ -63,19 +63,10 @@ public class ClassTest {
         Assert.assertEquals("madalinaAdmin", displayContact);
         System.out.println("My name is:" + displayContact);
 
-        testingDatabase = PageFactory.initElements(webDriver, TestingDatabase.class);
-        testingDatabase.connectionToDatabase();
-
         System.out.println("PARAM DATABASE");
 
         paramDatabase = PageFactory.initElements(webDriver, ParamDatabase.class);
-        paramDatabase.retrieveUser("madalina");
-
-
-
-
-
-
+        paramDatabase.retrieveUser("madalina", "madalina");
 
     }
 }
