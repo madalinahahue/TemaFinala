@@ -17,7 +17,7 @@ public class ParamDatabase {
             String password = "root";
 
             //Query to Execute
-        String query2="SELECT name, mail FROM users WHERE name LIKE '%" + nameUser + "%' AND mail LIKE '%" + mailUser + "%'";
+        String query2="SELECT name, mail FROM users WHERE name='" + nameUser + "' AND mail='" + mailUser + "'";
 
             //Load mysql jdbc driver
             Class.forName("com.mysql.jdbc.Driver");

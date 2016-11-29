@@ -66,7 +66,7 @@ public class ClassTest {
         System.out.println("PARAM DATABASE");
 
         paramDatabase = PageFactory.initElements(webDriver, ParamDatabase.class);
-        paramDatabase.retrieveUser("madalina", "madalina");
+        paramDatabase.retrieveUser("madalinaAdmin", "madalina_admin@test.com");
 
     }
 }
