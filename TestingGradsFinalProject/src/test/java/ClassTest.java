@@ -4,9 +4,12 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.concurrent.TimeUnit;
@@ -15,8 +18,6 @@ import static org.junit.Assert.assertTrue;
 
 /**
  * Created by mhahue on 11/22/2016.
- * Code
- * //((JavascriptExecutor)webDriver).executeScript("arguments[0].checked = true;", createUsers.addUser());
  */
 public class ClassTest {
 
@@ -25,6 +26,7 @@ public class ClassTest {
     private CreateUsers createUsers;
     private VerifyUser verifyUser;
     private ParamDatabase paramDatabase;
+    private ExploringTheMenu exploringTheMenu;
 
 
     @Before
@@ -36,11 +38,14 @@ public class ClassTest {
     @After
     public void after() throws InterruptedException {
         Thread.sleep(5000);
-        webDriver.close();
+        //webDriver.close();
     }
 
+
+
+
     @Test
-    public void test() throws  ClassNotFoundException, SQLException {
+    public void test() throws ClassNotFoundException, SQLException, IOException {
 
         test2Params = PageFactory.initElements(webDriver, HomePage.class);
         test2Params.loginPage("admin", "admin_pass");
@@ -67,6 +72,14 @@ public class ClassTest {
 
         paramDatabase = PageFactory.initElements(webDriver, ParamDatabase.class);
         paramDatabase.retrieveUser("madalinaAdmin", "madalina_admin@test.com");
+
+        exploringTheMenu = PageFactory.initElements(webDriver, ExploringTheMenu.class);
+        exploringTheMenu.additionalTests("Test Automation for Web Applications");
+
+        exploringTheMenu.importFromFile();
+
+        exploringTheMenu.additionalTests1();
+
 
     }
 }

@@ -10,30 +10,6 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Created by mhahue on 11/22/2016.
- *
- * Comments
- *
- * //@FindBy(xpath = "//div[@class='left-corner']//ul[@class='action-links']/li/a")
- //@FindBy(xpath = "//a[@href='http://192.168.100.125/drupal-7.15/?q=admin/people/create']")
-
- * //((JavascriptExecutor)webDriver).executeScript("arguments[0].checked = true;", addUserButton);
- //addUserButton.click();
- //((JavascriptExecutor)webDriver).executeScript("arguments[0].checked = true;", usernameField// ;
- //webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
- //Assert.assertTrue(usernameField.isDisplayed());
- //        WebElement submit = webDriver.findElement(By.xpath("//input[@id='edit-submit']"));
- //        Actions action = new Actions(webDriver);
- //        action.moveToElement(submit).build().perform();
- //        action.click(submit);
- //        usernameInput.click();
- //        usernameInput.sendKeys("safsadsa");
- //    public UserForm form() {
- //
- //        UserForm userForm = PageFactory.initElements(webDriver, UserForm.class);
- //        userForm.waitForPageToLoad();
- //        return userForm;
- //    }
-
  */
 public class CreateUsers {
 
@@ -72,6 +48,8 @@ public class CreateUsers {
 
     @FindBy(css = "#edit-submit")
     private WebElement createNewAccount;
+
+
 
     //click on people and add user
     public void addUser() {

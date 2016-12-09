@@ -2,6 +2,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
@@ -70,7 +71,7 @@ public class VerifyUser {
     //when my name is found, click on it
     //click on contact option to see if my name is the same with the one i logged in
 
-    public void verifyUsers(String username) {
+    public ExploringTheMenu verifyUsers(String username) {
 
         int toolbar = toolbarList.size();
         if (toolbar != 0) {
@@ -100,6 +101,9 @@ public class VerifyUser {
         else {
             System.out.println("This user is not Admin");
         }
+        ExploringTheMenu exploringTheMenu = PageFactory.initElements(webDriver, ExploringTheMenu.class);
+        exploringTheMenu.waitForPageToLoad();
+        return exploringTheMenu;
     }
 
 
