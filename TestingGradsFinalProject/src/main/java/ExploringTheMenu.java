@@ -8,6 +8,7 @@ import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.io.*;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by mhahue on 11/29/2016.
@@ -49,10 +50,28 @@ public class ExploringTheMenu {
     @FindBy(xpath = "//input[@id='edit-comment-1']")
     private WebElement closeButton;
 
-    @FindBy(xpath = "//input[@id='edit-submit']")
+    @FindBy(xpath = "//select[@id='edit-operation']/option[@value='delete']")
+    private WebElement deleteSelectedContent;
+
+    @FindBy(id = "edit-submit")
     private WebElement saveButton;
 
-    public void additionalTests(String addTitle) {
+    @FindBy(xpath = "//div[@id='toolbar']//li[@class='last leaf']//a")
+    private WebElement findContentButton;
+
+    @FindBy(xpath = "//div[@class='fieldset-wrapper']/input[@type='submit']")
+    private WebElement updateButton;
+
+    @FindBy(xpath = "//div[@id='overlay-container']/iframe[@title='Content dialog']")
+    private WebElement iframeFindContent;
+
+    @FindBy(xpath = ".//*[@id='node-admin-content']/div/table[2]/thead/tr/th[1]/input")
+    private WebElement checkBox;
+
+    @FindBy(id = "edit-submit")
+    private WebElement deleteItems;
+
+    public void AddContent(String addTitle) {
         addContentField.click();
 
         webDriver.switchTo().defaultContent();
@@ -67,8 +86,7 @@ public class ExploringTheMenu {
         //addBodyText.sendKeys(addBody);
     }
 
-
-
+    //import Body from .txt
     public void importFromFile() throws IOException {
         //Create File In D: Driver.
         String TestFile = "C:\\Automation\\textBody.txt";
@@ -86,18 +104,23 @@ public class ExploringTheMenu {
             //System.out.println(Content);
             addBodyText.sendKeys(Content);
         }
-
     }
 
-    public void additionalTests1() {
+
+    public void AddContent2() {
+
         selectButton.click();
         Select oSelect = new Select(textFormat);
         oSelect.selectByIndex(2);
+
+        webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         StringSelection ss = new StringSelection("C:\\Automation\\download.jpg");
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
 
         Robot robot = null;
+
+        //select picture
 
         try {
             robot = new Robot();
@@ -124,14 +147,32 @@ public class ExploringTheMenu {
         }catch (InterruptedException e) {
             e.printStackTrace();
         }
+
+        webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
-
 
         menuList.click();
         closeButton.click();
         saveButton.click();
+    }
 
+    public void findContent() {
+        webDriver.switchTo().defaultContent();
+        findContentButton.click();
+
+        webDriver.switchTo().defaultContent();
+        webDriver.switchTo().frame(iframeFindContent);
+
+        checkBox.click();
+        deleteSelectedContent.click();
+
+        webDriver.switchTo().defaultContent();
+        webDriver.switchTo().frame(iframeFindContent);
+        updateButton.click();
+        //delete all articles
+        deleteItems.click();
     }
 
 

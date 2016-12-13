@@ -74,11 +74,13 @@ public class ClassTest {
         paramDatabase.retrieveUser("madalinaAdmin", "madalina_admin@test.com");
 
         exploringTheMenu = PageFactory.initElements(webDriver, ExploringTheMenu.class);
-        exploringTheMenu.additionalTests("Test Automation for Web Applications");
+        exploringTheMenu.AddContent("Test Automation for Web Applications");
 
         exploringTheMenu.importFromFile();
 
-        exploringTheMenu.additionalTests1();
+        exploringTheMenu.AddContent2();
+
+        exploringTheMenu.findContent();
 
 
     }
