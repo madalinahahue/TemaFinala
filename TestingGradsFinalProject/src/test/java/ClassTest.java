@@ -49,33 +49,33 @@ public class ClassTest {
         Assert.assertEquals("Hello admin", textIsPresent);
         System.out.println("Assert is working --> " + textIsPresent);
 
-//        createUsers = PageFactory.initElements(webDriver, CreateUsers.class);
-//        createUsers.addUser();
-//        createUsers.createUser("madalinaAdmin", "madalina_admin@test.com", "testtest", true); //admin
-//        createUsers.createUser("madalinaUser", "madalina_user@test.com", "testtest", false); //user
-//
-//        verifyUser = PageFactory.initElements(webDriver, VerifyUser.class);
-//        verifyUser.verifyLogin("madalinaAdmin", "testtest");
-//        verifyUser.verifyUsers("madalinaAdmin");
-//
-//
-//        String displayContact = verifyUser.displayContact();
-//        Assert.assertEquals("madalinaAdmin", displayContact);
-//        System.out.println("My name is:" + displayContact);
-//
-//        System.out.println("PARAM DATABASE");
-//
-//        paramDatabase = PageFactory.initElements(webDriver, ParamDatabase.class);
-//        paramDatabase.retrieveUser("madalinaAdmin", "madalina_admin@test.com");
-//
-//        addDeleteContent = PageFactory.initElements(webDriver, AddDeleteContent.class);
-//        addDeleteContent.AddContent("Test Automation for Web Applications");
-//
-//        addDeleteContent.importFromFile();
-//
-//        addDeleteContent.AddContent2();
+        createUsers = PageFactory.initElements(webDriver, CreateUsers.class);
+        createUsers.addUser();
+        createUsers.createUser("madalinaAdmin", "madalina_admin@test.com", "testtest", true); //admin
+        createUsers.createUser("madalinaUser", "madalina_user@test.com", "testtest", false); //user
 
-        //addDeleteContent.findContent();
+        verifyUser = PageFactory.initElements(webDriver, VerifyUser.class);
+        verifyUser.verifyLogin("madalinaAdmin", "testtest");
+        verifyUser.verifyUsers("madalinaAdmin");
+
+
+        String displayContact = verifyUser.displayContact();
+        Assert.assertEquals("madalinaAdmin", displayContact);
+        System.out.println("My name is:" + displayContact);
+
+        System.out.println("PARAM DATABASE");
+
+        paramDatabase = PageFactory.initElements(webDriver, ParamDatabase.class);
+        paramDatabase.retrieveUser("madalinaAdmin", "madalina_admin@test.com");
+
+        addDeleteContent = PageFactory.initElements(webDriver, AddDeleteContent.class);
+        addDeleteContent.AddContent("Test Automation for Web Applications");
+
+        addDeleteContent.importFromFile();
+
+        addDeleteContent.AddContent2();
+
+        addDeleteContent.findContent();
 
         editStructure = PageFactory.initElements(webDriver, EditStructure.class);
         editStructure.addStructure("Opinions about articles", "madalinahahue@gmail.com");

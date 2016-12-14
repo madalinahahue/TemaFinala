@@ -28,19 +28,16 @@ public class HomePage {
     private WebElement helloUser;
 
     //login, password, submit
-    public EditStructure loginPage(String username, String password) {
+    public CreateUsers loginPage(String username, String password) {
         usernameField.sendKeys(username);
         passwordField.sendKeys(password);
         submitButton.click();
 
         //return next page
-//        CreateUsers createUsers = PageFactory.initElements(webDriver, CreateUsers.class);
-//        createUsers.waitForPageToLoad();
-//        return createUsers;
+        CreateUsers createUsers = PageFactory.initElements(webDriver, CreateUsers.class);
+        createUsers.waitForPageToLoad();
+        return createUsers;
 
-        EditStructure editStructure = PageFactory.initElements(webDriver, EditStructure.class);
-        editStructure.waitForPageToLoad();
-        return editStructure;
     }
 
     //verify with an assert my name

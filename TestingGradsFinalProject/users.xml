@@ -1,0 +1,10 @@
+<listofusers>
+  <user id="usr1">
+     <username>madalina1</username>
+     <email>madalina1@gmail.com</email>
+  </user>
+  <user id="usr2">
+     <username>madalina2</username>
+     <email>madalina2@gmail.com</email>
+  </user>
+</listofusers>
