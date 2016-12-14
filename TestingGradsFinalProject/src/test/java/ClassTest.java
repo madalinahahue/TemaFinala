@@ -4,13 +4,10 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import java.io.IOException;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.concurrent.TimeUnit;
 
@@ -26,7 +23,8 @@ public class ClassTest {
     private CreateUsers createUsers;
     private VerifyUser verifyUser;
     private ParamDatabase paramDatabase;
-    private ExploringTheMenu exploringTheMenu;
+    private AddDeleteContent addDeleteContent;
+    private EditStructure editStructure;
 
 
     @Before
@@ -41,9 +39,6 @@ public class ClassTest {
         //webDriver.close();
     }
 
-
-
-
     @Test
     public void test() throws ClassNotFoundException, SQLException, IOException {
 
@@ -54,34 +49,36 @@ public class ClassTest {
         Assert.assertEquals("Hello admin", textIsPresent);
         System.out.println("Assert is working --> " + textIsPresent);
 
-        createUsers = PageFactory.initElements(webDriver, CreateUsers.class);
-        createUsers.addUser();
-        createUsers.createUser("madalinaAdmin", "madalina_admin@test.com", "testtest", true); //admin
-        createUsers.createUser("madalinaUser", "madalina_user@test.com", "testtest", false); //user
+//        createUsers = PageFactory.initElements(webDriver, CreateUsers.class);
+//        createUsers.addUser();
+//        createUsers.createUser("madalinaAdmin", "madalina_admin@test.com", "testtest", true); //admin
+//        createUsers.createUser("madalinaUser", "madalina_user@test.com", "testtest", false); //user
+//
+//        verifyUser = PageFactory.initElements(webDriver, VerifyUser.class);
+//        verifyUser.verifyLogin("madalinaAdmin", "testtest");
+//        verifyUser.verifyUsers("madalinaAdmin");
+//
+//
+//        String displayContact = verifyUser.displayContact();
+//        Assert.assertEquals("madalinaAdmin", displayContact);
+//        System.out.println("My name is:" + displayContact);
+//
+//        System.out.println("PARAM DATABASE");
+//
+//        paramDatabase = PageFactory.initElements(webDriver, ParamDatabase.class);
+//        paramDatabase.retrieveUser("madalinaAdmin", "madalina_admin@test.com");
+//
+//        addDeleteContent = PageFactory.initElements(webDriver, AddDeleteContent.class);
+//        addDeleteContent.AddContent("Test Automation for Web Applications");
+//
+//        addDeleteContent.importFromFile();
+//
+//        addDeleteContent.AddContent2();
 
-        verifyUser = PageFactory.initElements(webDriver, VerifyUser.class);
-        verifyUser.verifyLogin("madalinaAdmin", "testtest");
-        verifyUser.verifyUsers("madalinaAdmin");
+        //addDeleteContent.findContent();
 
-
-        String displayContact = verifyUser.displayContact();
-        Assert.assertEquals("madalinaAdmin", displayContact);
-        System.out.println("My name is:" + displayContact);
-
-        System.out.println("PARAM DATABASE");
-
-        paramDatabase = PageFactory.initElements(webDriver, ParamDatabase.class);
-        paramDatabase.retrieveUser("madalinaAdmin", "madalina_admin@test.com");
-
-        exploringTheMenu = PageFactory.initElements(webDriver, ExploringTheMenu.class);
-        exploringTheMenu.AddContent("Test Automation for Web Applications");
-
-        exploringTheMenu.importFromFile();
-
-        exploringTheMenu.AddContent2();
-
-        exploringTheMenu.findContent();
-
+        editStructure = PageFactory.initElements(webDriver, EditStructure.class);
+        editStructure.addStructure("Opinions about articles", "madalinahahue@gmail.com");
 
     }
 }

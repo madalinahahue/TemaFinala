@@ -1,6 +1,7 @@
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -12,11 +13,12 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Created by mhahue on 11/29/2016.
+ * **************************Add content and delete the content************************************
  */
-public class ExploringTheMenu {
+public class AddDeleteContent {
     private WebDriver webDriver;
 
-    public ExploringTheMenu(WebDriver webDriver) {
+    public AddDeleteContent(WebDriver webDriver) {
         this.webDriver = webDriver;
     }
 
@@ -148,7 +150,7 @@ public class ExploringTheMenu {
             e.printStackTrace();
         }
 
-        webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        webDriver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
@@ -158,7 +160,7 @@ public class ExploringTheMenu {
         saveButton.click();
     }
 
-    public void findContent() {
+    public EditStructure findContent() {
         webDriver.switchTo().defaultContent();
         findContentButton.click();
 
@@ -173,6 +175,10 @@ public class ExploringTheMenu {
         updateButton.click();
         //delete all articles
         deleteItems.click();
+
+        EditStructure editStructure = PageFactory.initElements(webDriver, EditStructure.class);
+        editStructure.waitForPageToLoad();
+        return editStructure;
     }
 
 
